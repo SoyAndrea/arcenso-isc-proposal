@@ -20,19 +20,18 @@ show their tack record.
 
 ### Andrea Gomez Vargas - Sociologist and Population Statistics Analyst
 
-Andrea Gomez Vargas is a sociologist specializing in population and official statistics. She works at Argentina’s National Institute of Statistics and Censuses (INDEC), where she has experience in the production and analysis of population statistics, including work on the final results of Argentina’s 2022 Population, Household and Housing Census. She is the main author of ARcenso, an open-source R package initiated through the rOpenSci Champions Program. Her contributions to the project combine expertise in census data and statistical methodology with R package development, particularly in the identification, harmonization, validation, and documentation of historical census data.
+Andrea holds a degree in Sociology and is currently pursuing a Master’s degree in Generation and Analysis of Statistical Information. She specializes in population and official statistics and works at Argentina’s National Institute of Statistics and Censuses (INDEC), where she has experience in the production and analysis of population statistics, including work on the final results of Argentina’s 2022 Population, Household and Housing Census. She is the main author of ARcenso, an open-source R package initiated through the rOpenSci Champions Program. Her contributions to the project combine expertise in census data and statistical methodology with R package development, particularly in the identification, harmonization, validation, and documentation of historical census data.
 
 
 ### Emanuel Ciardullo - Statistician and Data Science Coordinator
 
 
+Emanuel holds a degree in Statistics and is the coordinator of the Data Science and Alternative Data Sources Integration area at Argentina’s National Institute of Statistics and Censuses (INDEC). His experience includes statistical methodology, household survey weighting, time-series analysis, and seasonal adjustment. He has also provided international technical assistance in statistics through World Bank projects. He is a co-developer of CEMRepBoot, a statistical estimation and analysis tool developed in R and Shiny, and a co-author of ARcenso, where he contributes statistical, methodological, and technical expertise to data processing and package development.
 
 
 **Selected public artifacts**: [ARcenso repository](https://github.com/SoyAndrea/arcenso/), [ARcenso documentation](https://soyandrea.github.io/arcenso/), [rOpenSci Champions blog](https://ropensci.org/blog/2026/08/10/analisis-demografico-con-arcenso/), [ARcenso outreach and presentations](https://soyandrea.github.io/conoce-arcenso.html).
 
 
-
-### Public artifacts
 
 ## Contributors
 <!--

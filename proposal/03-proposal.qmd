@@ -17,6 +17,10 @@ section.
 Include concrete actions you will take and estimated timeline.
 -->
 
+This proposal aims to expand ARcenso’s historical census coverage and strengthen the package for a stable CRAN release. The project will incorporate additional historical census rounds following ARcenso’s existing data availability roadmap, while improving data validation, documentation, testing, and internal workflows to meet CRAN standards and support a robust and maintainable package.
+
+ARcenso is already a functional open-source package that has been used in teaching, university activities, R community events, and by users seeking historical census data. Funding would allow the project to move beyond its current initial stage by increasing the amount of accessible census data and strengthening the package for its first CRAN release. This would provide the R community with a more complete and reproducible resource for working with Argentina’s official census statistics.
+
 ## Detail
 <!--
 Go into more detail about the specifics of the project and how it delivers

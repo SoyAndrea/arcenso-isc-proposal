@@ -21,4 +21,12 @@ It is important to cover:
 -->
 ```
 
-An example in-text citation [@wickham2016].
+Argentina’s historical census data are essential for analyzing demographic and social change and producing evidence for research and public policy. However, these data are dispersed across publications, spreadsheets, and formats that vary across census rounds, while some older information originates from printed publications. This makes the data difficult to access, compare, and reuse, while also posing a challenge for preserving the country’s statistical memory.
+
+This problem also affects their use in R, a widely used tool for the analysis and production of official statistics. Working across census rounds requires locating original sources, interpreting changing structures and classifications, and transforming the data before they can be incorporated into reproducible workflows. Providing structured and documented historical data would reduce duplicated effort and facilitate reproducible longitudinal analysis using official statistics.
+
+ARcenso began addressing this problem through the rOpenSci Champions Program, developing an R package to organize and facilitate reproducible access to Argentina’s census data. The project currently includes an initial set of census data and a public roadmap for progressively expanding its historical and geographic coverage. However, much of the census series has yet to be integrated into the package, and its expansion requires substantial work in data recovery, harmonization, validation, and software development.
+
+
+- https://ropensci.org/blog/2024/02/15/champions-program-champions-2024/#andrea-gomez-vargas 
+
