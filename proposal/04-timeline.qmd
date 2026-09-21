@@ -7,11 +7,16 @@ detailed plan of how work will start on the project. This section is
 important because projects need to get up and running quickly.
 
 
- - [ ] Setting up collaboration platform inc. code for contributors etc.
- - [ ] License decisions
- - [ ] Reporting framework
+ - [x] Setting up collaboration platform inc. code for contributors etc.
+ - [x] License decisions
+ - [x] Reporting framework
 -->
 
+ARcenso already has the basic infrastructure in place, so the project can start working on technical deliverables from the first month:
+
+- **Collaboration platform.** The code is hosted in a public [GitHub repository](https://github.com/SoyAndrea/arcenso), with a bilingual (English and Spanish) contributing guide, a code of conduct, continuous integration with `R CMD check`, and test coverage reporting. During the start-up phase, we will add issue templates to report errors in a table and to request new tables, and a GitHub project board to track the work.
+- **License.** ARcenso is released under the MIT license, which will be kept for all code produced during the project, including the conversion pipeline.
+- **Reporting framework.** The team will hold bi-weekly check-ins to review progress, and each phase will be tracked as a GitHub milestone aligned with the payment milestones. At the end of each payment milestone, we will send a short progress report to the ISC, summarizing the deliverables completed, the census coverage achieved, and any changes to the plan.
 
 ## Technical delivery
 <!--
@@ -22,6 +27,22 @@ Including target dates is really important as you need to be committed
 and the ISC need to have a means of tracking delivery
 -->
 
+The project will run for nine months, from January to September 2027, in five phases:
+
+| Phase | Period | Deliverables |
+|---|---|---|
+| 1. Design | January 2027 | Specification of the new data format and the conversion pipeline; review of the existing metadata; updated roadmap including the 1960 census |
+| 2. Data format and packaging | February – March 2027 | 1970 and 1980 tables migrated to the new format; package size verified against CRAN limits; package published on R-universe |
+| 3. Semi-automated pipeline | March – April 2027 | AI-assisted extraction workflow producing versioned R scripts; automatic validation against published totals; written review protocol; 1991 national-level tables incorporated |
+| 4. Census coverage | May – August 2027 | 1960 census, 1980 census at the provincial level, and 1991 census at the provincial level incorporated and validated |
+| 5. Wrap-up and release | September 2027 | Updated documentation and vignettes; community testing; submission to CRAN; delivery blog post |
+
+Key target dates:
+
+- **30 April 2027:** release of the minimum viable product on R-universe (new data format and 1991 national-level tables).
+- **31 August 2027:** full census coverage from 1960 to 1991, at the national and provincial levels.
+- **30 September 2027:** submission to CRAN.
+
 ## Other aspects
 
 <!--
@@ -31,12 +52,21 @@ you will use, how you will host your code so that others can contribute,
 and how you will publicize your work. We encourage you to plan content
 to be shared quarterly on the R Consortium blog.
 
- - [ ] Announcement post
- - [ ] Delivery blog post
- - [ ] Social media
- - [ ] UseR!
- - [ ] ISC meetings
+ - [x] Announcement post
+ - [x] Delivery blog post
+ - [x] Social media
+ - [x] UseR!
+ - [x] ISC meetings
 -->
+
+All code will be released under the MIT license and developed openly on GitHub, where contributions are welcome in both English and Spanish. The package will be distributed through CRAN and R-universe, and each release will be archived on Zenodo with a DOI.
+
+To reach the widest number of users, we plan to:
+
+- publish an **announcement post** on the R Consortium blog at the start of the project, a **mid-project post** after the MVP release, and a **delivery post** at the end, in line with the recommended quarterly updates;
+- share progress on social media (Mastodon, Bluesky, and LinkedIn) and through the R en Buenos Aires and R-Ladies Buenos Aires communities;
+- submit talks about the project to **LatinR** and **useR!**, focusing both on the package and on the semi-automated conversion workflow, which may be useful for other projects working with historical statistical publications; and
+- present the project at **ISC meetings** when invited.
 
 ## Budget & funding plan
 
@@ -58,3 +88,14 @@ to the project and the project period. The ISC reserves the right to vet
 how funds are used for each project separately. If in doubt, please reach
 out to us.
 -->
+
+The budget covers labor only, for a total of 245 hours split equally between the two team members (122.5 hours each), at an hourly rate of USD 22.45. The project is divided into three deliverable-based milestones:
+
+| Milestone | Deliverables | Hours (Andrea + Emanuel) | Cost (USD) |
+|---|---|---|---|
+| 1. Design and data format (January 1 – March 31, 2027) | New data format specification; 1970 and 1980 tables migrated; package published on R-universe | 40 + 30 = 70 | 1,571 |
+| 2. Pipeline and census coverage (March 1 – August 31, 2027) | Semi-automated pipeline with validation and review protocol; MVP release; 1960, 1980 (provincial), and 1991 (national and provincial) tables incorporated | 57.5 + 77.5 = 135 | 3,031 |
+| 3. Wrap-up and release (September 1 – 30, 2027) | Documentation and vignettes; community testing; CRAN submission; delivery post | 25 + 15 = 40 | 898 |
+| **Total** | | **122.5 + 122.5 = 245** | **5,500** |
+
+In the event of partial funding, milestone 1 and the MVP included in milestone 2 would be prioritized, since they deliver a usable release and the pipeline needed to continue expanding coverage.

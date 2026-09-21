@@ -17,9 +17,17 @@ section.
 Include concrete actions you will take and estimated timeline.
 -->
 
-This proposal aims to expand ARcenso’s historical census coverage and strengthen the package for a stable CRAN release. The project will incorporate additional historical census rounds following ARcenso’s existing data availability roadmap, while improving data validation, documentation, testing, and internal workflows to meet CRAN standards and support a robust and maintainable package.
+This proposal aims to complete ARcenso's coverage of Argentina's 20th-century population censuses and to prepare the package for its first release on CRAN and R-universe. By the end of the project, ARcenso will provide the official tables published by INDEC for the 1960, 1970, 1980, and 1991 censuses, at both the national and provincial levels, in a tidy and documented format.
 
-ARcenso is already a functional open-source package that has been used in teaching, university activities, R community events, and by users seeking historical census data. Funding would allow the project to move beyond its current initial stage by increasing the amount of accessible census data and strengthening the package for its first CRAN release. This would provide the R community with a more complete and reproducible resource for working with Argentina’s official census statistics.
+The project is organized around three complementary lines of work:
+
+1. **Expanding census coverage.** We will incorporate the 1960 census, recently made available by INDEC; the 1980 census at the provincial level; and the complete 1991 census, at the national and provincial levels.
+2. **Preparing the package for CRAN and R-universe.** Beyond meeting CRAN's structural requirements, we will redesign how census tables are stored so that the package stays within CRAN's size limits as coverage grows. Numeric values will be stored as numbers instead of text, and tables will be consolidated and compressed, which also makes the data easier to use.
+3. **Semi-automating table conversion with AI, without compromising reproducibility or quality.** Today, each table is transcribed and standardized by hand. We will build a workflow in which AI tools propose the extraction and tidy structure of each table, while the versioned output is a deterministic R script that is validated against published totals and reviewed by a team member. AI will be part of the development process, not of the package: end users will not depend on it.
+
+The third line of work is what makes the first two feasible within the available time, and it will also allow the remaining stages of the roadmap (2001, 2010, and 2022) to be completed consistently after this project.
+
+ARcenso is already a functional open-source package, used in teaching, university activities, and R community events<!-- TODO: agregar links o evidencia de uso (cursos, charlas, useR! 2025, usuarios) -->. The project will run from January to September 2027. Funding would allow ARcenso to move beyond its initial stage and provide the R community with a complete, reproducible, and sustainable resource for working with Argentina's historical census statistics.
 
 ## Detail
 <!--
@@ -35,11 +43,40 @@ Depending on project type the detail section should include:
 What is the smallest thing you can build that delivers value to your users?
 -->
 
+The minimum viable product is a new release of ARcenso, published on R-universe, that:
+
+- stores all currently available tables (1970 and 1980) in the new compact data format, with numeric values stored as numbers;
+- keeps the current user interface (`get_census()`, `check_repository()`, and `arcenso_app()`) unchanged, so existing code keeps working; and
+- incorporates the 1991 national-level tables through the semi-automated pipeline, with every table validated against the totals published by INDEC.
+
+This release would already deliver value to users, since it improves the usability of the existing data and extends the series to 1991. It would also demonstrate that the pipeline works on real sources before it is applied to the rest of the scope.
+
 ### Architecture
 
 <!--
 What does the high-level architecture look like?
 -->
+
+The project involves two layers: the data stored in the package, and the development pipeline that produces it.
+
+**Data layer.** Currently, the package stores about 390 individual `.rds` files, with numeric values stored as text. The new format will:
+
+- store numeric values as integer or double columns;
+- consolidate tables into a small number of compressed files (for example, one per census year), instead of one file per table;
+- extend `census_metadata` with the source of each table (publication and table number) and its validation status; and
+- keep the internal structure hidden behind the existing functions, so the change is transparent to users.
+
+The target is to keep the package within CRAN's size limits after incorporating the full scope. If this is not achievable, the fallback is to split the data into a separate data package distributed through R-universe, while the main package is submitted to CRAN, following an established pattern for large data packages [@anderson_eddelbuettel_2017].
+
+**Development pipeline.** The conversion of each table will follow these steps, all kept in the `data-raw/` folder of the repository and excluded from the built package:
+
+1. **Source.** The original publication (printed volume scan, PDF, or spreadsheet) is registered with its reference.
+2. **AI-assisted extraction.** An AI tool proposes the transcription of the table and its tidy structure. For scanned sources, the transcribed values are saved as a versioned intermediate file, so the process can be reproduced without running the AI tool again.
+3. **Deterministic R script.** The standardization of each table, or group of similar tables, is done by a versioned R script that produces the final tidy table.
+4. **Automatic validation.** Automated tests check that the reported totals and subtotals match the published figures and that totals are consistent across related tables.
+5. **Human review.** Each table is reviewed by the team member who did not produce it, following a written review protocol, before it is merged.
+
+The pipeline will rely mostly on base R, consistent with the package's current approach of minimizing dependencies.
 
 ### Assumptions
 
@@ -47,8 +84,28 @@ What does the high-level architecture look like?
 What assumptions are you making that, if proven false, would invalidate the project?
 -->
 
+- **Source availability.** The published tables for the 1960 census, the 1980 census at the provincial level, and the 1991 census are accessible to the team, either in digital form or as printed volumes that can be scanned.
+- **Effectiveness of AI-assisted extraction.** AI tools can extract tables from the sources with enough accuracy to reduce manual effort substantially, even when validation and review are still required. If this does not hold for some sources (for example, low-quality scans), those tables will be converted manually, which would reduce the achievable coverage (see Failure modes).
+- **Team availability.** Each team member can dedicate about three hours per week throughout the project.
+- **Data size.** The new data format keeps the package within CRAN's size limits, or the fallback described in Architecture is accepted.
+- **Access to AI tools.** The AI tools used in the pipeline are available to the team at no cost to this grant. <!-- TODO: confirmar -->
+
 ### External dependencies
 
 <!--
 What external dependencies does the project have (e.g. libraries, services, other projects, etc.)?
 -->
+
+- **R packages.** ARcenso depends on R (>= 4.1.0) and imports `gt`, `shiny`, and `tidyselect`. Tests use `testthat`, and vignettes use `knitr` and `rmarkdown`. The full list of dependencies is available in the `DESCRIPTION` file of the [ARcenso repository](https://github.com/SoyAndrea/arcenso).
+- **Data sources.** Official census publications by INDEC for 1960, 1980, and 1991.
+- **Infrastructure.** GitHub and GitHub Actions for continuous integration, Codecov for test coverage, pkgdown for documentation, Zenodo for archiving releases, and CRAN and R-universe for distribution.
+- **AI tools.** General-purpose AI models used only during development, for table extraction. They are not dependencies of the package.
+
+### Failure modes and recovery
+
+| Failure mode | Recovery |
+|---|---|
+| A source is not accessible or its quality is too low for extraction | Reprioritize the scope, starting with the national level, and document the pending tables in the roadmap |
+| AI-assisted extraction is less accurate than expected | Use manual conversion for the affected tables, while keeping the same validation and review steps; reduce coverage to the MVP if needed |
+| The package exceeds CRAN's size limits | Split the data into a separate package distributed through R-universe |
+| Delays in team availability | The low weekly load leaves margin to redistribute work across phases; the MVP defines a minimum deliverable |

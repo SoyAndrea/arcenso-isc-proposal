@@ -9,14 +9,44 @@ thorough understanding going in of what the risks are to delivery
 What does success look like?
 -->
 
+The project will be considered successful when ARcenso provides a stable release, available on R-universe and submitted to CRAN, that:
+
+- includes the official tables of the 1960, 1970, 1980, and 1991 censuses at the national and provincial levels, each validated against the totals published by INDEC;
+- stores the data in the new compact format, with numeric values stored as numbers, within CRAN's size limits (or with the data distributed as a separate package, as described in the proposal);
+- keeps the existing user interface (`get_census()`, `check_repository()`, and `arcenso_app()`) working for all the new tables; and
+- includes a documented, reproducible conversion pipeline in the repository, so that the remaining stages of the roadmap can be completed with the same workflow.
+
 ## Measuring success
 <!--
 How will we know when success is achieved, what markers can we use
 along the way
 -->
 
+Progress will be tracked with the following markers:
+
+- **Intermediate markers:**
+  - package published on R-universe with the new data format (end of March 2027);
+  - MVP release, including the 1991 national-level tables processed through the pipeline (end of April 2027); and
+  - number of census years and geographic levels incorporated, reported at each milestone.
+- **Final markers:**
+  - full coverage from 1960 to 1991 at the national and provincial levels (end of August 2027);
+  - `R CMD check` passing without errors, warnings, or notes, and submission to CRAN (end of September 2027);
+  - share of tables that pass automatic validation against published totals, with a target of 100% of incorporated tables; and
+  - updated documentation and vignettes covering the new census years.
+- **Adoption markers:** downloads from CRAN and R-universe, GitHub issues and discussions, feedback from community testing, and use of the package in courses and research.
+
+## Key risks to delivery
+
+The main risks are the accessibility and quality of the historical sources, the accuracy of AI-assisted extraction, the package size, and the availability of the team. The failure modes and recovery strategies for each are described in the proposal section. Two features of the plan reduce these risks: the MVP defines a usable deliverable early in the project, and the low weekly workload (about three hours per person) leaves margin to absorb delays.
+
 ## Future work
 <!--
 How could this be extended / developed in the future by yourself
 and/or the community in general?
 -->
+
+After this project, the remaining stages of the roadmap are the 2001, 2010, and 2022 censuses at the national and provincial levels. The semi-automated pipeline developed here will make it possible to incorporate them faster and with the same validation standards. Other possible extensions include:
+
+- submitting ARcenso to rOpenSci software peer review;
+- adding harmonized versions of selected variables to make comparisons across census rounds easier; and
+- documenting the conversion pipeline as a reusable workflow for other projects that work with historical statistical publications.
