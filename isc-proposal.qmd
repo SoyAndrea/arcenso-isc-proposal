@@ -1,10 +1,14 @@
 ---
-title: "Proposal Title"
+title: "ARcenso: Expanding and Strengthening an R Package for Argentina’s Census Data"
 author:
-  - name: Annie Easley
-    orcid: 5555-5555-5555-5555
+  - name: Andrea Gomez Vargas
+    orcid: 0009-0007-8745-3967
     affiliations:
-      - "Lewis Research Center, National Aeronautics and Space Administration"
+      - "rOpenSci, R en Buenos Aires, INDEC Argentina"
+  - name: Emanuel Ciardullo
+    orcid: 0009-0004-9447-7420
+    affiliations:
+      - "rOpenSci, R en Buenos Aires, INDEC Argentina"
 
 date: today
 date-format: iso
@@ -15,7 +19,7 @@ format:
     geometry:
       - left=1.25in
       - right=1.25in
-bibliography: references.bib
+#bibliography: references.bib
 ---
 
 _This template was last revised on 2026-03-24._
