@@ -28,8 +28,21 @@ Andrea holds a degree in Sociology and is currently pursuing a Master’s degree
 
 Emanuel holds a degree in Statistics and is the coordinator of the Data Science and Alternative Data Sources Integration area at Argentina’s National Institute of Statistics and Censuses (INDEC). His experience includes statistical methodology, household survey weighting, time-series analysis, and seasonal adjustment. He has also provided international technical assistance in statistics through World Bank projects. He is a co-developer of CEMRepBoot, a statistical estimation and analysis tool developed in R and Shiny, and a co-author of ARcenso, where he contributes statistical, methodological, and technical expertise to data processing and package development.
 
+<br>
 
-**Selected public artifacts**: [ARcenso repository](https://github.com/SoyAndrea/arcenso/), [ARcenso documentation](https://soyandrea.github.io/arcenso/), [rOpenSci Champions blog](https://ropensci.org/blog/2026/08/10/analisis-demografico-con-arcenso/), [ARcenso outreach and presentations](https://soyandrea.github.io/conoce-arcenso.html).
+**Selected public artifacts**: 
+
+- [ARcenso repository](https://github.com/SoyAndrea/arcenso/)
+
+- [ARcenso documentation](https://soyandrea.github.io/arcenso/)
+
+- [rOpenSci Champions blog: From Census Data to Demographic Analysis with ARcenso: A Reproducible Workflow in R](https://ropensci.org/blog/2026/08/10/analisis-demografico-con-arcenso/)
+
+- [useR! 2025 - ARcenso: a Package Born From Chaos, Powered by Community](https://soyandrea.github.io/conoce-arcenso/2025-useR/)
+
+- [LatinR 2024 - ARcenso: First Steps in Developing an R Package in Community with rOpenSci](https://soyandrea.github.io/conoce-arcenso/2024-latinr/)
+
+- [Other ARcenso outreach activities](https://soyandrea.github.io/conoce-arcenso.html).
 
 
 
