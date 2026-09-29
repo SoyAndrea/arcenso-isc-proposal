@@ -17,17 +17,22 @@ section.
 Include concrete actions you will take and estimated timeline.
 -->
 
-This proposal aims to complete ARcenso's coverage of Argentina's 20th-century population censuses and to prepare the package for its first release on CRAN and R-universe. By the end of the project, ARcenso will provide the official tables published by INDEC for the 1960, 1970, 1980, and 1991 censuses, at both the national and provincial levels, in a tidy and documented format.
+This proposal aims to expand and strengthen ARcenso as open-source R infrastructure for reproducible access to Argentina's official census statistics, and to prepare the package for its first CRAN release and publication on R-universe. By the end of the project, ARcenso will provide the official tables published by INDEC for the 1960, 1970, 1980, and 1991 censuses, at both the national and subnational levels, in a tidy, documented, and validated format.
+
+
 
 The project is organized around three complementary lines of work:
 
-1. **Expanding census coverage.** We will incorporate the 1960 census, recently made available by INDEC; the 1980 census at the provincial level; and the complete 1991 census, at the national and provincial levels.
-2. **Preparing the package for CRAN and R-universe.** Beyond meeting CRAN's structural requirements, we will redesign how census tables are stored so that the package stays within CRAN's size limits as coverage grows. Numeric values will be stored as numbers instead of text, and tables will be consolidated and compressed, which also makes the data easier to use.
-3. **Semi-automating table conversion with AI, without compromising reproducibility or quality.** Today, each table is transcribed and standardized by hand. We will build a workflow in which AI tools propose the extraction and tidy structure of each table, while the versioned output is a deterministic R script that is validated against published totals and reviewed by a team member. AI will be part of the development process, not of the package: end users will not depend on it.
+- **Expanding and harmonizing census coverage:** We will advance ARcenso's public roadmap by completing the 1980 census at the subnational level and incorporating the 1991 census at the national and subnational levels. We will also add the 1960 census, whose digital tables were released by INDEC in August 2026. Together, this expansion represents approximately 3,500 Excel files containing official census tables that still need to be classified, standardized, documented, and validated.
 
-The third line of work is what makes the first two feasible within the available time, and it will also allow the remaining stages of the roadmap (2001, 2010, and 2022) to be completed consistently after this project.
 
-ARcenso is already a functional open-source package, used in teaching, university activities, and R community events<!-- TODO: agregar links o evidencia de uso (cursos, charlas, useR! 2025, usuarios) -->. The project will run from January to September 2027. Funding would allow ARcenso to move beyond its initial stage and provide the R community with a complete, reproducible, and sustainable resource for working with Argentina's historical census statistics.
+- **Automating the data-processing workflow:** We will build on ARcenso's existing R-based workflow for converting census source files into package data, incorporating automation strategies such as AI-assisted extraction and GitHub Actions. The workflow will remain reproducible and version-controlled, with automated validation and human review.
+
+
+- **Strengthening the package infrastructure and functionality:** We will continue strengthening ARcenso in line with rOpenSci package development guidelines and the technical requirements of CRAN and R-universe. Building on the package's existing functions, we will improve and extend its functionality as census coverage grows, strengthen tests and documentation, and develop reproducible vignettes and workflows. We will also improve internal data storage, including appropriate data types and the consolidation and compression of data files where needed, and prepare the package for its first release on CRAN and R-universe.
+
+
+ARcenso is already a functional open-source R package, used in teaching, university activities, and R community events. The project will run from January to September 2027. By strengthening the package infrastructure and its data-processing workflow, this project will provide the R community and other users of census data with a reproducible and sustainable resource for working with Argentina's historical census statistics, while also supporting the teaching and learning of R through real-world data processing, visualization, and reproducible reporting. It will also establish the technical foundation for extending the roadmap to the 2001, 2010, and 2022 census rounds.
 
 ## Detail
 <!--
