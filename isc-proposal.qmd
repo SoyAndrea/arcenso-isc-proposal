@@ -37,5 +37,11 @@ bibliography: references.bib
 
 {{< include proposal/05-success.qmd >}}
 
+
+
+::: {.content-visible when-format="pdf"}
+# References
+:::
+
 ::: refs
 :::
