@@ -18,9 +18,9 @@ format:
     geometry:
       - left=1.25in
       - right=1.25in
+    include-in-header: footer.tex
 bibliography: references.bib
 ---
-
 {{< include proposal/00-exec-summary.qmd >}}
 
 {{< include proposal/01-signatories.qmd >}}
