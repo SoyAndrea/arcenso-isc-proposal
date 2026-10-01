@@ -4,11 +4,11 @@ author:
   - name: Andrea Gomez Vargas
     orcid: 0009-0007-8745-3967
     affiliations:
-      - "rOpenSci, R en Buenos Aires, INDEC Argentina"
+      - "rOpenSci, RLadies+, R en Buenos Aires, National Institute of Statistics and Censuses of Argentina (INDEC)"
   - name: Emanuel Ciardullo
     orcid: 0009-0004-9447-7420
     affiliations:
-      - "rOpenSci, R en Buenos Aires, INDEC Argentina"
+      - "rOpenSci, R en Buenos Aires, National Institute of Statistics and Censuses of Argentina (INDEC)"
 
 date: today
 date-format: iso
@@ -19,7 +19,7 @@ format:
     geometry:
       - left=1.25in
       - right=1.25in
-#bibliography: references.bib
+bibliography: references.bib
 ---
 
 {{< include proposal/00-exec-summary.qmd >}}

@@ -48,13 +48,14 @@ Depending on project type the detail section should include:
 What is the smallest thing you can build that delivers value to your users?
 -->
 
-The minimum viable product is a new release of ARcenso, published on R-universe, that:
+The minimum viable product is a strengthened release of ARcenso that:
 
-- stores all currently available tables (1970 and 1980) in the new compact data format, with numeric values stored as numbers;
-- keeps the current user interface (`get_census()`, `check_repository()`, and `arcenso_app()`) unchanged, so existing code keeps working; and
-- incorporates the 1991 national-level tables through the semi-automated pipeline, with every table validated against the totals published by INDEC.
+- **implements the improved package infrastructure**, including a more scalable internal data storage structure and metadata for data provenance and validation;
+- **strengthens the package functionality and quality**, maintaining the existing user-facing functions (`get_census()`, `check_repository()`, and `arcenso_app()`) while extending tests, documentation, and reproducible vignettes;
+- **is prepared for distribution through CRAN and R-universe**; and
+- **incorporates the 1991 national-level census tables** through the reproducible data-processing and validation workflow.
 
-This release would already deliver value to users, since it improves the usability of the existing data and extends the series to 1991. It would also demonstrate that the pipeline works on real sources before it is applied to the rest of the scope.
+This release would deliver a more robust and maintainable package, extend the available census series to 1991, and establish the technical infrastructure needed to scale ARcenso to additional census rounds and subnational data.
 
 ### Architecture
 
@@ -62,26 +63,25 @@ This release would already deliver value to users, since it improves the usabili
 What does the high-level architecture look like?
 -->
 
-The project involves two layers: the data stored in the package, and the development pipeline that produces it.
+ARcenso connects official census sources with R users through two main technical layers: the internal data infrastructure of the package and the reproducible development pipeline used to process and validate the data. Users access the resulting census data through the package's existing functions (`get_census()`, `check_repository()`, and `arcenso_app()`).
 
-**Data layer.** Currently, the package stores about 390 individual `.rds` files, with numeric values stored as text. The new format will:
+**Data infrastructure.** Currently, the package stores about 390 individual `.rds` files, with numeric values stored as text. To support expanded census coverage while keeping the package maintainable, the internal data structure will:
 
 - store numeric values as integer or double columns;
-- consolidate tables into a small number of compressed files (for example, one per census year), instead of one file per table;
+- consolidate tables into a smaller number of compressed files, rather than storing one file per table;
 - extend `census_metadata` with the source of each table (publication and table number) and its validation status; and
-- keep the internal structure hidden behind the existing functions, so the change is transparent to users.
+- keep these internal changes transparent to users through the existing package interface.
 
-The target is to keep the package within CRAN's size limits after incorporating the full scope. If this is not achievable, the fallback is to split the data into a separate data package distributed through R-universe, while the main package is submitted to CRAN, following an established pattern for large data packages [@anderson_eddelbuettel_2017].
+The architecture is designed to support the expanded census coverage while remaining suitable for distribution through CRAN and R-universe. If the complete data collection cannot remain within CRAN's size limits, the data can be separated into a companion data package distributed through R-universe, while the main ARcenso package is submitted to CRAN [@anderson_eddelbuettel_2017].
 
-**Development pipeline.** The conversion of each table will follow these steps, all kept in the `data-raw/` folder of the repository and excluded from the built package:
+**Development pipeline.** ARcenso's existing R-based workflow will be extended into a reproducible and version-controlled pipeline for processing and validating census sources. Development files and scripts will remain in `data-raw/` and will not be included in the built package. The workflow will follow these steps:
 
-1. **Source.** The original publication (printed volume scan, PDF, or spreadsheet) is registered with its reference.
-2. **AI-assisted extraction.** An AI tool proposes the transcription of the table and its tidy structure. For scanned sources, the transcribed values are saved as a versioned intermediate file, so the process can be reproduced without running the AI tool again.
-3. **Deterministic R script.** The standardization of each table, or group of similar tables, is done by a versioned R script that produces the final tidy table.
-4. **Automatic validation.** Automated tests check that the reported totals and subtotals match the published figures and that totals are consistent across related tables.
-5. **Human review.** Each table is reviewed by the team member who did not produce it, following a written review protocol, before it is merged.
+1. **Source and classification.** Official census source files are identified, classified, and registered with their references and metadata.
+2. **Processing and standardization.** Versioned R scripts transform source tables into the standardized structure used by ARcenso. Where useful, AI-assisted extraction can support this process, but the resulting transformation and data remain reproducible without requiring AI tools.
+3. **Automated validation.** Automated checks verify published totals and subtotals, data types, expected structures, and consistency across related tables.
+4. **Human review.** Processed tables and validation results are reviewed before being incorporated into the package.
 
-The pipeline will rely mostly on base R, consistent with the package's current approach of minimizing dependencies.
+The pipeline will rely primarily on R, consistent with the package's current approach of minimizing dependencies.
 
 ### Assumptions
 
@@ -89,11 +89,8 @@ The pipeline will rely mostly on base R, consistent with the package's current a
 What assumptions are you making that, if proven false, would invalidate the project?
 -->
 
-- **Source availability.** The published tables for the 1960 census, the 1980 census at the provincial level, and the 1991 census are accessible to the team, either in digital form or as printed volumes that can be scanned.
-- **Effectiveness of AI-assisted extraction.** AI tools can extract tables from the sources with enough accuracy to reduce manual effort substantially, even when validation and review are still required. If this does not hold for some sources (for example, low-quality scans), those tables will be converted manually, which would reduce the achievable coverage (see Failure modes).
-- **Team availability.** Each team member can dedicate about three hours per week throughout the project.
-- **Data size.** The new data format keeps the package within CRAN's size limits, or the fallback described in Architecture is accepted.
-- **Access to AI tools.** The AI tools used in the pipeline are available to the team at no cost to this grant. <!-- TODO: confirmar -->
+No critical assumptions have been identified that would invalidate the project. The proposed infrastructure improvements are designed to deliver value independently of the final number of census tables incorporated during the project period.
+
 
 ### External dependencies
 
@@ -101,16 +98,12 @@ What assumptions are you making that, if proven false, would invalidate the proj
 What external dependencies does the project have (e.g. libraries, services, other projects, etc.)?
 -->
 
-- **R packages.** ARcenso depends on R (>= 4.1.0) and imports `gt`, `shiny`, and `tidyselect`. Tests use `testthat`, and vignettes use `knitr` and `rmarkdown`. The full list of dependencies is available in the `DESCRIPTION` file of the [ARcenso repository](https://github.com/SoyAndrea/arcenso).
-- **Data sources.** Official census publications by INDEC for 1960, 1980, and 1991.
-- **Infrastructure.** GitHub and GitHub Actions for continuous integration, Codecov for test coverage, pkgdown for documentation, Zenodo for archiving releases, and CRAN and R-universe for distribution.
-- **AI tools.** General-purpose AI models used only during development, for table extraction. They are not dependencies of the package.
+- **R packages.** ARcenso depends on R (>= 4.1.0) and imports `gt`, `shiny`, and `tidyselect`. Tests use `testthat`, and vignettes use `knitr` and `rmarkdown`. The complete and current list of package dependencies is maintained in the [`DESCRIPTION`](https://github.com/SoyAndrea/arcenso/blob/main/DESCRIPTION) file.
+
+- **Data sources.** Official census tables and publications produced by Argentina's National Institute of Statistics and Censuses ([INDEC](https://www.indec.gob.ar/indec/web/Nivel3-Tema-2-41)) for the census rounds included in the project.
+
+- **Development and distribution infrastructure.** GitHub is used for version control and collaborative development, Codecov for test coverage, pkgdown for package documentation, Zenodo for archiving releases, and CRAN and R-universe for package distribution.  
 
 ### Failure modes and recovery
 
-| Failure mode | Recovery |
-|---|---|
-| A source is not accessible or its quality is too low for extraction | Reprioritize the scope, starting with the national level, and document the pending tables in the roadmap |
-| AI-assisted extraction is less accurate than expected | Use manual conversion for the affected tables, while keeping the same validation and review steps; reduce coverage to the MVP if needed |
-| The package exceeds CRAN's size limits | Split the data into a separate package distributed through R-universe |
-| Delays in team availability | The low weekly load leaves margin to redistribute work across phases; the MVP defines a minimum deliverable |
+The main technical failure mode identified is that the expanded census collection may become too large to be efficiently stored and distributed within the main ARcenso package. If this occurs, the census data will be separated from the main package and made available through a companion data package or another R-accessible data distribution mechanism, while maintaining ARcenso as the user-facing interface.

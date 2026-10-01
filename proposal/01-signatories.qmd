@@ -45,15 +45,18 @@ Emanuel holds a degree in Statistics and is the coordinator of the Data Science 
 - [Other ARcenso outreach activities](https://soyandrea.github.io/conoce-arcenso.html).
 
 
+<!--
 
 ## Contributors
-<!--
+
 Who are the people who have actively helped with this proposal but
 won't necessarily be on the core project team later?
 -->
 
-## Consulted
+
 <!--
+## Consulted
+
 Who has been given the opportunity to provide feedback on the
 proposal?
 -->
