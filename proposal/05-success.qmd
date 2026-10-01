@@ -18,7 +18,7 @@ The project will be considered successful when ARcenso provides a stable release
 - **maintains and strengthens the existing package functionality**, including `get_census()`, `check_repository()`, and `arcenso_app()`, as census coverage expands;
 
 - **includes updated tests, documentation, and reproducible vignettes** for the expanded package; and
-- **is distributed through R-universe and submitted to CRAN**.
+- **is released on CRAN and published on R-universe**.
 
 ## Measuring success
 
@@ -31,7 +31,7 @@ Progress and success will be measured through:
 
 - **Intermediate package releases and `NEWS.md`**, documenting technical improvements, expansion of census coverage, and implementation of the processing and validation pipeline throughout the project;
 - **quarterly R Consortium blog updates**, providing a public record of project progress, milestones, and outcomes; and
-- **the final stable release**, with a clean `R CMD check`, updated documentation and vignettes, distribution through R-universe, and submission to CRAN.
+- **the final stable release**, with a clean `R CMD check`, updated documentation and vignettes, the first CRAN release and publication on R-universe.
 
 
 ## Future work

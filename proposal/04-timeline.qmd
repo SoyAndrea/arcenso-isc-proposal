@@ -29,14 +29,14 @@ Including target dates is really important as you need to be committed
 and the ISC need to have a means of tracking delivery
 -->
 
-The project will run for nine months, from January to September 2027, in five phases:
+The project will run for nine months, from January to September 2027, in four phases:
 
 | Phase | Period | Deliverables |
 |---|---|---|
 | **1. Package infrastructure** | January – March 2027 | Address package quality improvements identified through `pkgcheck`, while maintaining a clean `R CMD check`; restructure internal data storage and data types; and review and adapt existing functions in preparation for CRAN and R-universe distribution. |
 | **2. Processing and validation pipeline** | April 2027 | Develop a reproducible data-processing and validation workflow; document the review process; and incorporate the 1991 national-level census tables as the first application of the workflow. |
 | **3. Census coverage** | May – August 2027 | Continue the incorporation, standardization, documentation, and validation of the 1960 census and subnational tables from the 1980 and 1991 censuses using the package infrastructure and processing pipeline. |
-| **4. Testing, documentation and distribution** | September 2027 | Finalize package testing and technical refinements; update documentation and vignettes; conduct community testing; and prepare ARcenso for distribution through R-universe and submission to CRAN. |
+| **4. Testing, documentation and distribution** | September 2027 | Finalize package testing and technical refinements; update documentation and vignettes; conduct community testing; and prepare ARcenso for its first CRAN release and publication on R-universe. |
 
 
 Key target dates:
@@ -44,7 +44,7 @@ Key target dates:
 
 - **31 March 2027:** Package infrastructure improvements completed, including internal data storage and data types, package quality improvements, and review of existing functions.
 - **31 August 2027:** Data-processing and validation pipeline implemented and applied to the planned expansion of census coverage.
-- **30 September 2027:** Final project delivery, including package testing, updated documentation and vignettes, community testing, distribution through R-universe, and submission to CRAN.
+- **30 September 2027:** Final project delivery, including package testing, updated documentation and vignettes, community testing, the first CRAN release, and publication on R-universe.
 
 ## Other aspects
 

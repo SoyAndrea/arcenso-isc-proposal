@@ -9,7 +9,6 @@ author:
     orcid: 0009-0004-9447-7420
     affiliations:
       - "rOpenSci, R en Buenos Aires, National Institute of Statistics and Censuses of Argentina (INDEC)"
-
 date: today
 date-format: iso
 format:
@@ -25,6 +24,10 @@ bibliography: references.bib
 {{< include proposal/00-exec-summary.qmd >}}
 
 {{< include proposal/01-signatories.qmd >}}
+
+::: {.content-visible when-format="pdf"}
+{{< pagebreak >}}
+:::
 
 {{< include proposal/02-problemdefinition.qmd >}}
 

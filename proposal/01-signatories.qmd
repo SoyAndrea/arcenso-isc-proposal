@@ -28,9 +28,9 @@ Andrea holds a degree in Sociology and is currently pursuing a Master’s degree
 
 Emanuel holds a degree in Statistics and is the coordinator of the Data Science and Alternative Data Sources Integration area at Argentina’s National Institute of Statistics and Censuses (INDEC). His experience includes statistical methodology, household survey weighting, time-series analysis, and seasonal adjustment. He has also provided international technical assistance in statistics through World Bank projects. He is a co-developer of CEMRepBoot, a statistical estimation and analysis tool developed in R and Shiny, and a co-author of ARcenso, where he contributes statistical, methodological, and technical expertise to data processing and package development.
 
-<br>
 
-**Selected public artifacts**: 
+
+### Selected public artifacts 
 
 - [ARcenso repository](https://github.com/SoyAndrea/arcenso/)
 
